@@ -21,12 +21,15 @@ export default function MainDetail({ selectedCripto }) {
 
   useEffect(
     function () {
-      console.log("use effect is running within main");
+      console.log("1 - MainDetail.jsx - use effect is running");
       fetch(getCriptoUpdateUrl(selectedCripto))
         .then((response) => response.json())
         .then(function (liveCryptoFromServer) {
           setcurrentLiveCryptoInfo(liveCryptoFromServer[selectedCripto]);
-          console.log("this is our state after fetch", currentLiveCryptoInfo);
+          console.log(
+            "2- MainDetail.jsx - this is our state after fetch",
+            currentLiveCryptoInfo
+          );
         });
     },
     [selectedCripto]

@@ -18,17 +18,22 @@ function App() {
   }
 
   useEffect(function () {
-    console.log("use effect is running within maindetail");
+    console.log("1 - App.jsx - use effect is running within App");
     fetch(CRIPTO_LIST)
       .then((response) => response.json())
       .then(function (cryptoFromServer) {
         setcryptoCurrencies([...cryptoFromServer]);
         console.log(
-          "this is our state after fetch in maindetail",
+          "2 - App.jsx - this is our state after useEffect WITHIN function",
           cryptoCurrencies
         );
       });
   }, []);
+
+  console.log(
+    "3 - App.jsx - this is our state after useEffect OUTSIDE function in App",
+    cryptoCurrencies
+  );
 
   return (
     /* These (<> </>) are called React Fragments, and allow us to return more than one top element */
@@ -42,19 +47,14 @@ function App() {
           />
         }
       </aside>
-      <main
-        onClick={function () {
-          console.log("this is state within main", cryptoCurrencies);
-        }}
-        className="main-detail"
-      >
+      <main onClick={function () {}} className="main-detail">
         {selectedCripto ? (
           <MainDetail
             selectedCripto={selectedCripto}
             cryptoCurrencies={cryptoCurrencies}
           />
         ) : (
-          "Select a coin bro!"
+          "Select a coin to secure financial feedom & bring forward a new era of transparency to this corrupt world we live in!"
         )}
         {/* News feed component needs to go here */}
       </main>

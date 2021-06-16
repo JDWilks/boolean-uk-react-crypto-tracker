@@ -2,6 +2,7 @@ export default function SideListItem({
   isSelectedCripto,
   setSelectedCripto,
   cryptoCurrencies,
+
   // item: { id, name }
 }) {
   return cryptoCurrencies.map(function (currencies) {
