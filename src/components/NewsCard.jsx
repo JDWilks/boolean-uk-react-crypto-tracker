@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function NewsLink({ url }) {
   return (
     <a href={url} target="_blank">
@@ -8,14 +10,20 @@ function NewsLink({ url }) {
 
 export default function NewsCard({ newsItem: { description } }) {
   return (
-    <article className="newsfeed__card">
-      <p>
-        {description
-          .split(/(https?:\/\/.*\b\/?)/g)
-          .map(match =>
-            /https?/.test(match) ? <NewsLink url={match} /> : match
-          )}
-      </p>
-    </article>
+    <li>
+      <article className="newsfeed__card">
+        <p>
+          {description
+            .split(/(https?:\/\/.*\b\/?)/g)
+            .map((match, index) =>
+              /https?/.test(match) ? (
+                <NewsLink key={index} url={match} />
+              ) : (
+                match
+              )
+            )}
+        </p>
+      </article>
+    </li>
   );
 }
