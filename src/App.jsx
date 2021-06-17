@@ -69,7 +69,8 @@ function App() {
         {selectedCripto ? (
           <MainDetail
             selectedCripto={currentCryptoObject}
-            cryptoCurrencies={cryptoCurrencies}
+            // cryptoCurrencies={cryptoCurrencies}
+            // ⬆️ i dindn't think i needed the above ⬆️
           />
         ) : (
           "Select a coin to secure financial feedom & bring forward a new era of transparency to this corrupt world we live in!"
